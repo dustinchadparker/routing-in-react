@@ -23,28 +23,28 @@ class FilmX extends Component {
   render() {
     return (
       <Fragment>
-        <ul class="list-group">
-          <li class="list-group-item">
+        <ul className="list-group">
+          <li className="list-group-item">
             <strong>Title:</strong> <p>{this.state.filmData.title}</p>
           </li>
-          <li class="list-group-item">
+          <li className="list-group-item">
             <strong>Description:</strong>{" "}
             <p> {this.state.filmData.description}</p>
           </li>
-          <li class="list-group-item">
+          <li className="list-group-item">
             <strong>Director:</strong> <p>{this.state.filmData.director}</p>
           </li>
-          <li class="list-group-item">
+          <li className="list-group-item">
             <strong>Producer:</strong> <p> {this.state.filmData.producer}</p>
           </li>
-          <li class="list-group-item">
+          <li className="list-group-item">
             <strong>Release Date:</strong>{" "}
             <p> {this.state.filmData.release_date}</p>
           </li>
-          <li class="list-group-item">
+          <li className="list-group-item">
             <strong>Score:</strong> <p> {this.state.filmData.rt_score}</p>
           </li>
-          <li class="list-group-item">
+          <li className="list-group-item">
             <strong>ID:</strong> <p> {this.state.filmData.id}</p>
           </li>
         </ul>
