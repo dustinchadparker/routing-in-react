@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "isomorphic-fetch";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "es6-promise";
 
 class Films extends Component {
+  constructor() {
+    super();
 
-    constructor(props) {
-        super(props);
-    
-        this.state = {
-          films: [
-            {
-              title: [],
-              description: [],
-              director: []
-            }
-          ]
+    this.state = {
+      films: [
+        {
+          title: [],
+          description: [],
+          director: [],
+          id: []
         }
-    }
+      ]
+    };
+  }
 
-    componentDidMount() {
-        fetch(`https://ghibliapi.herokuapp.com/films`)
+  componentDidMount() {
+    fetch(`https://ghibliapi.herokuapp.com/films`)
       .then(res => res.json())
       .then(filmData => {
         let filmList = filmData.map(film => {
@@ -29,7 +29,8 @@ class Films extends Component {
           return {
             title: film.title,
             description: film.description,
-            director: film.director
+            director: film.director,
+            id: film.id
           };
         });
 
@@ -39,27 +40,29 @@ class Films extends Component {
       });
   }
 
-    
-
-    render() {
-        return this.state.films.map(item => {
-            return (
-                
-              <div
-                className="card text-white bg-secondary mb-1"
-                style={{ maxWidth: "18rem" }}
-              >
-                <div className="card-header">{item.title}</div>
-                <div className="card-body">
-                  <h5 className="card-title">{item.director}</h5>
-                  <p className="card-text">{item.description}</p>
-                </div>
-              </div>
-              
-            );
-          }
-        )
-    }
+  render() {
+    return this.state.films.map(item => {
+      return (
+        <div
+          className="card text-white bg-secondary mb-1"
+          style={{ maxWidth: "18rem" }}
+        >
+          <div className="card-header">{item.title}</div>
+          <div className="card-body">
+            <h5 className="card-title">{item.director}</h5>
+            <p className="card-text">{item.description}</p>
+            <a
+              href={`/films/${item.id}`}
+              className="btn btn-primary"
+              rel="noopener noreferrer"
+            >
+              Show me {item.name}'s details!
+            </a>
+          </div>
+        </div>
+      );
+    });
+  }
 }
 
 export default Films;
